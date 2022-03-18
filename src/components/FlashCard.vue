@@ -28,7 +28,7 @@
 
           <button
             v-if="incorrectCards.length > 0"
-            @click="setIncorrectCards">Use Incorrect Cards</button>
+            @click="useIncorrectCards">Use Incorrect Cards</button>
 
         </div>
 
@@ -204,17 +204,18 @@ export default {
       }
       this.getRandomCard();
     },
-    handleReset() {
-      this.cards = [...this.cachedCards];
+    resetCards() {
       this.incorrectCards = [];
       this.correctCards = [];
       this.getRandomCard();
     },
-    setIncorrectCards() {
+    handleReset() {
+      this.cards = [...this.cachedCards];
+      this.resetCards();
+    },
+    useIncorrectCards() {
       this.cards = [...this.incorrectCards];
-      this.incorrectCards = [];
-      this.correctCards = [];
-      this.getRandomCard();
+      this.resetCards();
     },
   },
 };

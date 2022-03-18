@@ -20,7 +20,7 @@
 
         </div>
 
-        <div v-else>
+        <div class="column" v-else>
 
           <h3>Would you like to start over?</h3>
 
@@ -31,7 +31,7 @@
           <button
             class="btn"
             v-if="incorrectCards.length > 0"
-            @click="useIncorrectCards">Use Incorrect Cards</button>
+            @click="useIncorrectCards">Restart with Incorrect Cards</button>
 
         </div>
 

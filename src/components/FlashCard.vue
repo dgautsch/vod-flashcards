@@ -1,8 +1,8 @@
 <template>
 
-  <div class="wrapper">
+  <div class="row">
 
-    <div class="container">
+    <div class="container row">
 
         <div v-if="hasCurrentCard" class="vod-flashcard">
 
@@ -24,9 +24,12 @@
 
           <h3>Would you like to start over?</h3>
 
-          <button @click="handleReset">Reset All Cards</button>
+          <button
+            class="btn"
+            @click="handleReset">Reset All Cards</button>
 
           <button
+            class="btn"
             v-if="incorrectCards.length > 0"
             @click="useIncorrectCards">Use Incorrect Cards</button>
 
@@ -34,19 +37,27 @@
 
     </div>
 
-    <div v-if="hasCurrentCard" class="container">
+    <div v-if="hasCurrentCard" class="container row">
 
-      <h3>Did you get it right?</h3>
+      <div class="column">
 
-      <button @click="onCorrectClick">Yes</button>
+        <h3>Did you get it right?</h3>
 
-      <button @click="onIncorrectClick">No</button>
+        <button
+          class="btn affirmative"
+          @click="onCorrectClick">Yes</button>
+
+        <button
+          class="btn"
+          @click="onIncorrectClick">No</button>
+
+      </div>
 
     </div>
 
     <div class="container row">
 
-      <div class="column">
+      <div class="column column-correct">
 
         <h3>Correct Cards</h3>
 
@@ -55,14 +66,14 @@
           <li
             v-for="( correctCard, idx ) in correctCards"
             class="vod-list-item"
-            :key="idx">{{ correctCard.name }}
+            :key="idx">✅ {{ correctCard.name }}
           </li>
 
         </ul>
 
       </div>
 
-      <div class="column">
+      <div class="column column-incorrect">
 
         <h3>Incorrect Cards</h3>
 
@@ -71,7 +82,7 @@
           <li
             v-for="( incorrectCard, idx ) in incorrectCards"
             class="vod-list-item"
-            :key="idx">{{ incorrectCard.name }}
+            :key="idx">❌ {{ incorrectCard.name }}
           </li>
 
         </ul>
@@ -243,6 +254,21 @@ export default {
   flex: 1;
 }
 
+.column-incorrect,
+.column-correct {
+  border: none;
+  padding: 1em;
+}
+
+h3 {
+  text-align: center;
+}
+
+.vod-list {
+  text-transform: capitalize;
+  text-align: left;
+}
+
 .vod-flashcard {
   width: 300px;
   height: 200px;
@@ -295,4 +321,35 @@ export default {
 .vod-list-item {
   list-style: none;
 }
+
+.btn {
+  background-color: #282828;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3rem;
+  margin: 0 1em 0.5em;
+  padding: 0 2.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn.affirmative {
+  background-color: #489;
+}
+
+.btn:hover {
+  box-shadow: rgba(78, 73, 73, 0.5) 0 1px 10px;
+  transition-duration: .1s;
+}
+
 </style>

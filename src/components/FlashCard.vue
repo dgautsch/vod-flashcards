@@ -123,6 +123,9 @@ export default {
         imageUrl: 'fleet.png',
         name: 'fleet',
       }, {
+        imageUrl: 'knowledge.png',
+        name: 'knowledge',
+      }, {
         imageUrl: 'darkness.png',
         name: 'darkness',
       }, {
